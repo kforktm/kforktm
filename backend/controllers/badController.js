@@ -18,6 +18,7 @@ const setBadVideo = asyncHandler(async (req, res) => {
     const video = await Video.create({
         description: req.body.description,
         location: req.body.location,
+        postedBy: req.body.postedBy,
         tag: "bad"
     })
 

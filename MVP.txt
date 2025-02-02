@@ -1,0 +1,24 @@
+The first thing that shows up is the
+Big
+Beautiful
+Dialog Box that will ask people to select,
+
+What do you want to see or publish?
+BAD - GOOD - BEAUTIFUL
+
+
+PUT IT IN NEPALI and ENGLISH both of these.
+
+
+MVP:
+THIS IS A MOBILE FIRST APPLICATION SO, HIGHLY RECOMMENDED TO USE IN MOBILE PHONE
+Dialog BOX TO CHOOSE THE CATEGORY
+Viewing one by one
+
+The TOP RIGHT CORNER WILL HAVE UPLOAD BUTTON...---
+
+GOOD                        BAD                EXCELLENT
+
+You're watching Good Videos
+
+
