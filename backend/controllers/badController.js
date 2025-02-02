@@ -2,17 +2,14 @@ const asyncHandler = require('express-async-handler')
 
 const Video = require('../models/video')
 
-// @desc    Get Bad Videos
-// @route   Get /api/bad
+
 const getBadVideos = asyncHandler(async (req, res) => {
     const badVideos = await Video.find()
     res.status(200).json(badVideos)
 })
 
-// @desc    Set Bad Video
-// @route   POST /api/bad
+
 const setBadVideo = asyncHandler(async (req, res) => {
-    console.log(req.body)
     if(!req.body.location){
         res.status(400)
         throw new Error('Please add description and location field')
@@ -28,15 +25,42 @@ const setBadVideo = asyncHandler(async (req, res) => {
     res.status(200).json(video)
 })
 
-// @desc    Delete Bad Video
-// @route   DELETE /api/bad/:id
+
+const updateBadVideo = asyncHandler(async (req, res) => {
+    if(!req.body.location && !req.body.description){
+        res.status(400)
+        throw new Error('Please update description or location field')
+    }
+
+    const updatedVideo = await Video.findByIdAndUpdate(req.params.id, {
+        description: req.body.description,
+        location: req.body.location,
+        tag: "bad"
+    })
+
+
+    res.status(200).json(updatedVideo)
+})
+
+
 const deleteBadVideo = asyncHandler(async (req, res) => {
-    res.status(200).json({message: 'Delete Bad Video'})
+
+    const deleteVideo = await Video.findById(req.params.id)
+
+    if (!deleteVideo){
+        res.status(404)
+        throw new Error('Video not found')
+    }
+
+    await Video.remove()
+
+    res.status(200).json({message: `Deleted Video ${req.params.id}`})
 })
 
 
 module.exports = {
     getBadVideos,
     setBadVideo,
-    deleteBadVideo
+    deleteBadVideo,
+    updateBadVideo
 }
